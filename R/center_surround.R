@@ -2,9 +2,12 @@
 #'
 #' @description This function enables computing center-surround differences as defined by Itii & Koch (1998).
 #'
-#' @param minuend Center image
-#' @param subtrahend Surround image
+#' @param center Center image
+#' @param surround Surround image
 #' @param abs Logical (default \code{TRUE}). Should absolute values of the differences be reported?
-center_surround <- function(minuend, subtrahend, abs = TRUE){
+center_surround <- function(center, surround, abs = TRUE){
+  dim_c <- dim(center)
+  dim_s <- dim(surround)
+
 
 }
