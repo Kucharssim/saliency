@@ -40,8 +40,12 @@ itti_koch <- function(image){
   blue_yellow_oponency <- feature_maps(diff_pyramids(broad_channels$B, broad_channels$Y),
                                        diff_pyramids(broad_channels$Y, broad_channels$B))
 
+  orientation_pyramids <- gabor_pyramid(intensity)
 
+  orientation_contrast <- lapply(orientation_pyramids, feature_maps)
 
+  browser()
+  return(saliency)
 }
 
 diff_pyramids <- function(pyr1, pyr2){

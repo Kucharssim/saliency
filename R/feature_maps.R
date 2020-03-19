@@ -3,7 +3,7 @@
 #' @param c_scale which pyramid etages of the centers to take
 #' @param d_scale which pyramid etages of the surrounds to take (s = c + d)
 
-feature_maps <- function(center, surround=NULL, c_scale = c(2, 3, 4), d_scale = c(3, 4)){
+feature_maps <- function(center, surround=NULL, c_scale = c(2, 3, 4), d_scale = c(3, 4), normalize = TRUE){
   if(is.null(surround)) surround <- center
 
   maps <- list()
@@ -11,6 +11,7 @@ feature_maps <- function(center, surround=NULL, c_scale = c(2, 3, 4), d_scale = 
   for(c in c_scale){
     for(d in d_scale){
       maps[[paste(c, c+d, sep = "_")]] <- center_surround(center[[as.character(c)]], surround[[as.character(c+d)]])
+      if(normalize) maps[[paste(c, c+d, sep = "_")]] <- normalization(maps[[paste(c, c+d, sep = "_")]])
     }
   }
 

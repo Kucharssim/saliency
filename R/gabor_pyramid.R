@@ -1,9 +1,9 @@
 gabor_pyramid <- function(gaussian_pyramid){
   out <- list()
 
-  for(i in seq_along(gaussian_pyramid)){
-    for(a in c("0", "45", "90", "135")){
-      out[[as.character(i-1)]][[a]] <- OpenImageR::convolution(image = gaussian_pyramid[[i]], kernel = get_gabor_kernel(a))
+  for(a in c("0", "45", "90", "135")){
+   for(i in seq_along(gaussian_pyramid)){
+      out[[a]][[as.character(i-1)]] <- OpenImageR::convolution(image = gaussian_pyramid[[i]], kernel = get_gabor_kernel(a))
     }
   }
   return(out)
